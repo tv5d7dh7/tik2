@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="en_US"><head>
+<!DOCTYPE html><html lang="ru_RU"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
     <meta name="theme-color" content="#FFFFFF">
     <meta name="google" value="notranslate">
     <meta name="Description" content="TikTok Pte. Ltd.">
     
-        <link rel="preload" href="/service-worker.js?v=41.18.3" as="script">
+        <link rel="preload" href="/service-worker.js?v=41.18.7" as="script">
         <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
         
     
@@ -31,10 +31,10 @@
     </noscript>
     <!-- End Meta Pixel Code -->   
     
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logo-1770198098884_512x512_2.webp">
-    <link rel="icon" type="image/png" sizes="48x48" href="images/logo-1770198098884_512x512_4.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo-1770198098884_512x512_4.webp">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/logo-1770198098884_512x512_1.webp">
     <link rel="apple-touch-icon" href="images/logo-1770198098884_512x512_3.webp">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/logo-1770198098884_512x512_1.webp">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/logo-1770198098884_512x512_2.webp">
     <link rel="apple-touch-icon" sizes="180x180" href="images/logo-1770198098884_512x512.webp">
     <link rel="apple-touch-icon" sizes="167x167" href="images/logo-1770198098884_512x512_5.webp">
     <link rel="apple-touch-startup-image" href="/uploads/pwas/ed4vVH7OAbvE/logo-1770198098884_512x512.webp?s=300x300">
@@ -72,7 +72,7 @@
     
     
 </head>
-<body class="theme-light" data-button-type="" data-match-theme="false" data-auto-comments="false" data-pwauid="POedua4v8DVHei7O" data-application-server-key="BMSowoO0VBjnSlHf91E-n-xHO5yAI7zYGJm5kZzgchsa8P9B_mdhZNBJRdSvHM3oU9-CNyVuCzJyz-A3DVWffgA">
+<body class="theme-light" data-button-type="" data-match-theme="false" data-auto-comments="false" data-pwauid="PLedEE4vNXVH1F7O" data-application-server-key="BMSowoO0VBjnSlHf91E-n-xHO5yAI7zYGJm5kZzgchsa8P9B_mdhZNBJRdSvHM3oU9-CNyVuCzJyz-A3DVWffgA">
 <div id="_js">
     <div id="__layout">
         <div id="content">
@@ -234,14 +234,6 @@
         white-space: nowrap;
     }
 </style>
-<style>
-  #install-button.is-loading {
-    background-color: #9e9e9e !important;
-    border-color: #9e9e9e !important;
-    cursor: default;
-    opacity: 0.85;
-  }
-</style>
 
 
     <button type="button" id="install-button" data-install="Installieren" data-installing="Initialisierung..." data-download="Laden..." data-open="Offen" class="install-button app-comp__install-button" data-size="12.1 MB">
@@ -274,13 +266,15 @@
                                         <div class="gallery">
                                             
                                             
-                                                <div class="gall_img"><img src="images/image-1770198095152-49eb_375x667.webp" alt="" loading="lazy"></div>
-                                            
                                                 <div class="gall_img"><img src="images/image-1770198095904-h6lp_375x667.webp" alt="" loading="lazy"></div>
                                             
-                                                <div class="gall_img"><img src="images/image-1770198096557-scf9_375x667.webp" alt="" loading="lazy"></div>
-                                            
                                                 <div class="gall_img"><img src="images/image-1770198098402-hj6t_375x667.webp" alt="" loading="lazy"></div>
+                                            
+                                                <div class="gall_img"><img src="images/image-1770374334195-e880_375x667.webp" alt="" loading="lazy"></div>
+                                            
+                                                <div class="gall_img"><img src="images/image-1770375541150-b7uh_375x667.webp" alt="" loading="lazy"></div>
+                                            
+                                                <div class="gall_img"><img src="images/image-1770375697190-ey1j_375x667.webp" alt="" loading="lazy"></div>
                                             
                                         </div>
                                         <div class="app-description" data-v-4c38fcdc="">
@@ -1309,7 +1303,7 @@
                      width:48px;
                      height:48px;
                      border-radius:50%;
-                     background:#FFA500;
+                     background:#4ECDC4;
                      display:flex;
                      align-items:center;
                      justify-content:center;
@@ -1417,12 +1411,51 @@
                                             </div>
                                         
                                         <div id="image-modal" class="modal">
-  <span class="close">×</span>
+  <span class="close">�</span>
   <img class="modal-content image-content" src="" style="display: none;">
   <iframe class="modal-content video-content" style="display: none;" frameborder="0" allowfullscreen=""></iframe>
 </div>
 
+<script>
+let imageModal = document.getElementById('image-modal');
+let modalImageContent = imageModal.querySelector(".image-content");
+let modalVideoContent = imageModal.querySelector(".video-content");
+let span = document.getElementsByClassName("close")[0];
 
+let images = document.querySelectorAll('.comment-images__image');
+images.forEach(img => {
+  img.onclick = function () {
+      imageModal.style.display = "block";
+      modalImageContent.style.display = "block";
+      modalVideoContent.style.display = "none";
+      modalImageContent.src = this.src;
+  }
+});
+
+let videoPreviews = document.querySelectorAll('.comment-video-preview');
+videoPreviews.forEach(videoPreview => {
+  let src = videoPreview.querySelector('.comment-video__thumbnail')?.src;
+  
+  videoPreview.onclick = function () {
+      imageModal.style.display = "block";
+      modalImageContent.style.display = "none";
+      modalVideoContent.style.display = "block";
+      let videoId = src.split('/vi/')[1].split('/')[0];
+      modalVideoContent.src = `https://www.youtube.com/embed/${videoId}`;
+  }
+  
+})
+
+span.onclick = closeModal;
+imageModal.onclick = closeModal;
+
+function closeModal() {
+  imageModal.style.display = "none";
+  modalImageContent.src = "";
+  modalVideoContent.src = ""; 
+}
+
+</script>
 
 <style>
 .modal {
@@ -1565,7 +1598,6 @@
         console.log('🎯 Meta Pixel loaded. ID: 1213841187552552');
         console.log('📄 PageView event sent automatically');
     </script>
-
 
 
 </body></html>
